@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import 'react-native-gesture-handler';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -40,6 +41,29 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="accueil"
+        options={{
+          title: 'Accueil',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="shoe.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="connexion_producteur"
+        options={{
+          title: 'Connexion',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wallet.pass.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="inscriptionProducteur"
+        options={{
+          title: 'Inscription',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wallet.pass" color={color} />,
+        }}
+      />
     </Tabs>
+    
+    
   );
 }

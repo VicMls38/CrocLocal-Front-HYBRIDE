@@ -28,13 +28,6 @@ export default function TabLayout() {
         }),
       }}>
       <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
@@ -42,26 +35,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="accueil"
+        name="index"
         options={{
-          title: 'Accueil',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="shoe.fill" color={color} />,
+          title: 'Home',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="connexion_producteur"
+        name="faq"
         options={{
-          title: 'Connexion',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wallet.pass.fill" color={color} />,
+          title: 'FAQ',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="questionmark.circle" color={color} />,
         }}
       />
-      <Tabs.Screen
-        name="inscriptionProducteur"
-        options={{
-          title: 'Inscription',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="wallet.pass" color={color} />,
-        }}
-      />
+
     </Tabs>
     
     

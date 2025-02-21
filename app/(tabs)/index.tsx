@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     height: 100, // Ajuste la hauteur selon ton design
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 80,
   },
   title: {
     fontSize: 24,
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   question: {
     fontSize: 18,
     fontWeight: "500",
-    marginBottom: 20,
     color: "#333",
+    marginBottom: 80,
   },
   button: {
     backgroundColor: "#D26D34",
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   carotte: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     resizeMode: "contain",
     marginTop: 40,
   },

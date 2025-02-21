@@ -1,77 +1,149 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 
-
-export default function HomeScreen() {
+const FAQScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      {/* En-tête stylisé avec une image en fond */}
-      <ImageBackground source={require("@/assets/images/header_croque.png")} style={styles.header}>
-        <Text style={styles.title}>Bonjour !</Text>
-      </ImageBackground>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>
+        FOIRE AUX {"\n"}
+        <Text style={styles.titleBold}>QUESTIONS</Text>
+      </Text>
+      <Text style={styles.subtitle}>
+        {"\n"}Des questions ? {"\n"} Nous sommes là pour t'aider !
+      </Text>
 
-      {/* Question */}
-      <Text style={styles.question}>Qui es-tu ?</Text>
+      <View style={styles.questionContainer}>
+        <Text style={styles.questionText}>
+          Quels types de photos puis-je ajouter pour illustrer mes paniers ?
+        </Text>
+        <TouchableOpacity style={styles.icon}>
+          <Text style={styles.iconText}>+</Text>
+        </TouchableOpacity>
+      </View>
 
-      {/* Boutons */}
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Un producteur</Text>
+      <View style={styles.questionContainer}>
+        <Text style={styles.questionText}>
+          Comment configurer mon profil ?
+        </Text>
+        <TouchableOpacity style={styles.icon}>
+          <Text style={styles.iconText}>+</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.questionContainer}>
+        <Text style={styles.questionText}>
+          Quels sont les commissions prélevées par l'application sur chaque vente ?
+        </Text>
+        <TouchableOpacity style={styles.icon}>
+          <Text style={styles.iconText}>+</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.questionContainer}>
+        <Text style={styles.questionText}>
+          Comment définir le contenu d'un panier surprise ?
+        </Text>
+        <TouchableOpacity style={styles.icon}>
+          <Text style={styles.iconText}>+</Text>
+        </TouchableOpacity>
+      </View>
+
+      <Text>{"\n"}Une question ?</Text>
+      <View>
+        <TextInput
+          style={styles.input}
+          placeholder="Pose ta question ici"
+          placeholderTextColor="grey"
+        />
+      </View>
+
+      <TouchableOpacity style={styles.btnSubmit} onPress={() => alert('Envoyé !')}>
+        <Text style={styles.btnSubmitText}>Envoyer</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Un consommateur</Text>
-      </TouchableOpacity>
 
-      {/* Image de la carotte */}
-      <Image source={require("@/assets/images/carotte.png")} style={styles.carotte} />
-    </SafeAreaView>
+      <Text style={styles.footerText}>
+        Besoin de plus d'informations ? Envoie un mail à contact@croclocal.fr
+      </Text>
+    </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "#F9F9F9",
-    paddingTop: 20,
-  },
-  header: {
-    width: "90%",
-    height: 100, // Ajuste la hauteur selon ton design
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 30,
+    flexGrow: 1,
+    padding: 20,
+    backgroundColor: '#F5F5F5',
   },
   title: {
     fontSize: 24,
-    fontWeight: "bold",
-    color: "#3D3D3D",
-    textAlign: "center",
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  question: {
-    fontSize: 18,
-    fontWeight: "500",
-    marginBottom: 20,
-    color: "#333",
+  titleBold: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  button: {
-    backgroundColor: "#D26D34",
-    paddingVertical: 12,
-    paddingHorizontal: 40,
-    borderRadius: 10,
-    width: "80%",
-    alignItems: "center",
-    marginBottom: 15,
-  },
-  buttonText: {
-    color: "#FFF",
+  subtitle: {
     fontSize: 16,
-    fontWeight: "bold",
+    textAlign: 'flex-start',
+    marginBottom: 30,
+    color: '#555',
   },
-  carotte: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
-    marginTop: 40,
+  questionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#CEDD8F',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 10,
+  },
+  questionText: {
+    flex: 1,
+    fontSize: 16,
+  },
+  icon: {
+    backgroundColor: '#81C784',
+    borderRadius: 50,
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  iconText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  input: {
+    height: 40,
+    borderColor: '#CEDD8F',
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    marginVertical: 20,
+  },
+  footerText: {
+    textAlign: 'center',
+    marginTop: 20,
+    color: '#555',
+  },
+  btnSubmit: {
+    width: '60%',
+    backgroundColor: '#70B54D',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 20,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  btnSubmitText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
+
+export default FAQScreen;

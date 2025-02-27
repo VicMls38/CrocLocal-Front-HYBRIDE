@@ -142,24 +142,27 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
   },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-  },
+  // buttonText: {
+  //   color: "white",
+  //   fontWeight: "bold",
+  // },
   checkIcon: {
     marginTop: 10,
   },
   commandButton: {
-    backgroundColor: "#A2C653",
+    backgroundColor: "#CEDD8F",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
   },
   continueButton: {
+    backgroundColor: "#70B54D",
+    padding: 10,
+    borderRadius: 5,
     marginTop: 10,
   },
   continueText: {
-    color: "#A2C653",
+    color: "white",
     fontWeight: "bold",
   },
 });

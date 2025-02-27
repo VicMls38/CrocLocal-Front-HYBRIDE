@@ -7,9 +7,9 @@ const ITEM_WIDTH = width * 0.7;
 const SPACING = 10;
 
 const orders = [
-  { id: "1", status: "", title: "Abonnement L\n12.99€", image: require("@/assets/images/panier_l.png"), selection: true },
-  { id: "2", status: "", title: "2 paniers S\n19.99€", image: require("@/assets/images/panier_s.png"), selection: false },
-  { id: "3", status: "", title: "3 paniers M\n23.99€", image: require("@/assets/images/panier_m.png"), selection: false },
+  { id: "1", status: "", title: "Paniers S\n12.99€", image: require("@/assets/images/panier_s.png"), selection: true },
+  { id: "2", status: "", title: "Paniers M\n19.99€", image: require("@/assets/images/panier_m.png"), selection: false },
+  { id: "3", status: "", title: "Paniers L\n23.99€", image: require("@/assets/images/panier_l.png"), selection: false },
 ];
 
 const PanierCarousel = () => {

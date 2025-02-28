@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 const FichePublique = () => {
+  const [activeTab, setActiveTab] = useState('Informations');
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>FICHE PUBLIQUE</Text>
@@ -52,70 +54,86 @@ const FichePublique = () => {
       </View>
 
       <View style={styles.infoTextContainer}>
-        <TouchableOpacity>
-          <Text style={styles.infoText}>Informations du producteur</Text>
+        <TouchableOpacity onPress={() => setActiveTab('Informations')}>
+          <Text style={[styles.infoText, activeTab === 'Informations' && styles.activeTab]}>
+            Informations du producteur
+          </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.infoText}>Avis</Text>
+        <TouchableOpacity onPress={() => setActiveTab('Avis')}>
+          <Text style={[styles.infoText, activeTab === 'Avis' && styles.activeTab]}>
+            Avis
+          </Text>
         </TouchableOpacity>
       </View>
 
-      <View style={styles.sectionContainer}>
-        <View style={styles.hoursHeader}>
-          <Text style={styles.sectionTitle}>Tes productions</Text>
-          <TouchableOpacity style={styles.modifyButton}>
-            <Text style={styles.modifyButtonText}>Modifier</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.productionContainer}>
-          <View style={styles.productionItem}>
-            <Image
-              source={require('@/assets/images/produitFrais.png')}
-              style={styles.productionImage}
-            />
-            <Text style={styles.productionText}>Produits frais</Text>
+      {activeTab === 'Informations' && (
+        <View>
+          <View style={styles.sectionContainer}>
+            <View style={styles.hoursHeader}>
+              <Text style={styles.sectionTitle}>Tes productions</Text>
+              <TouchableOpacity style={styles.modifyButton}>
+                <Text style={styles.modifyButtonText}>Modifier</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.productionContainer}>
+              <View style={styles.productionItem}>
+                <Image
+                  source={require('@/assets/images/produitFrais.png')}
+                  style={styles.productionImage}
+                />
+                <Text style={styles.productionText}>Produits frais</Text>
+              </View>
+              <View style={styles.productionItem}>
+                <Image
+                  source={require('@/assets/images/produitTransforme.png')}
+                  style={styles.productionImage}
+                />
+                <Text style={styles.productionText}>Produits transformés</Text>
+              </View>
+            </View>
           </View>
-          <View style={styles.productionItem}>
-            <Image
-              source={require('@/assets/images/produitTransforme.png')}
-              style={styles.productionImage}
-            />
-            <Text style={styles.productionText}>Produits transformés</Text>
+
+          <View style={styles.separator} />
+
+          <View style={styles.sectionContainer}>
+            <View style={styles.hoursHeader}>
+              <Text style={styles.sectionTitle}>Tes certifications</Text>
+              <TouchableOpacity style={styles.modifyButton}>
+                <Text style={styles.modifyButtonText}>Modifier</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.certificationContainer}>
+              <Image
+                source={require('@/assets/images/certifBio.png')}
+                style={styles.certificationImage}
+              />
+            </View>
+          </View>
+
+          <View style={styles.separator} />
+
+          <View style={styles.sectionContainer}>
+            <View style={styles.hoursHeader}>
+              <Text style={styles.sectionTitle}>Vos horaires</Text>
+              <TouchableOpacity style={styles.modifyButton}>
+                <Text style={styles.modifyButtonText}>Modifier</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.hoursContainer}>
+              <Text style={styles.hoursLabel}>Mardi à vendredi</Text>
+              <Text style={styles.hoursValue}>10h00 | 18h00</Text>
+            </View>
           </View>
         </View>
-      </View>
+      )}
 
-      <View style={styles.separator} />
-
-      <View style={styles.sectionContainer}>
-        <View style={styles.hoursHeader}>
-          <Text style={styles.sectionTitle}>Tes certifications</Text>
-          <TouchableOpacity style={styles.modifyButton}>
-            <Text style={styles.modifyButtonText}>Modifier</Text>
-          </TouchableOpacity>
+      {activeTab === 'Avis' && (
+        <View style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Avis des clients</Text>
+          {/* Ajoutez ici le contenu pour l'onglet Avis */}
+          <Text>Contenu des avis...</Text>
         </View>
-        <View style={styles.certificationContainer}>
-          <Image
-            source={require('@/assets/images/certifBio.png')}
-            style={styles.certificationImage}
-          />
-        </View>
-      </View>
-
-      <View style={styles.separator} />
-
-      <View style={styles.sectionContainer}>
-        <View style={styles.hoursHeader}>
-          <Text style={styles.sectionTitle}>Vos horaires</Text>
-          <TouchableOpacity style={styles.modifyButton}>
-            <Text style={styles.modifyButtonText}>Modifier</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.hoursContainer}>
-          <Text style={styles.hoursLabel}>Mardi à vendredi</Text>
-          <Text style={styles.hoursValue}>10h00 | 18h00</Text>
-        </View>
-      </View>
+      )}
     </ScrollView>
   );
 };
@@ -182,11 +200,13 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 16, // Taille de la police
-    fontWeight: 'bold', // Police en gras
     color: '#333', // Couleur du texte
     textAlign: 'center', // Centrer le texte
     textDecorationLine: 'underline', // Souligner le texte
     textDecorationColor: '#CEDD8F', // Couleur du soulignement
+  },
+  activeTab: {
+    fontWeight: 'bold', // Mettre en gras le texte de l'onglet actif
   },
   separator: {
     height: 2, // Hauteur de la ligne

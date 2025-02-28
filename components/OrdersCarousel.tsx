@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, ScrollView, Dimensions, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons"; // Import de l'icône validée
+import { useRouter } from "expo-router";
 
 const { width } = Dimensions.get("window");
 const ITEM_WIDTH = width * 0.7;
@@ -13,6 +14,9 @@ const orders = [
 ];
 
 const OrdersCarousel = () => {
+
+  const router = useRouter();
+
   return (
     <View style={styles.wrapper}>
       <ScrollView
@@ -26,7 +30,7 @@ const OrdersCarousel = () => {
         style={styles.scrollView}
       >
         {orders.map((order, index) => (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/commandesProducteur")}>
           <View key={index} style={styles.card}>
             {/* 🔹 Statut de la commande */}
             <View style={styles.statusWrapper}>

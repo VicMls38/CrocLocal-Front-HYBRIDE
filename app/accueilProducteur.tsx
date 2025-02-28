@@ -1,7 +1,11 @@
 import React from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image, ImageBackground, StyleSheet } from 'react-native';
+import { useRouter } from "expo-router";
 
 export default function HomeScreen() {
+
+  const router = useRouter();
+
   return (
     <SafeAreaView style={styles.container}>
       
@@ -13,7 +17,7 @@ export default function HomeScreen() {
       <View style={styles.gridContainer}>
         
         {/* Commandes (image en fond, sans couleur de fond) */}
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => router.push("/AccueilCommandesProducteur")}>
           <ImageBackground 
             source={require('@/assets/images/commande_croque.png')}  
             style={styles.imageBackground} 
@@ -27,7 +31,7 @@ export default function HomeScreen() {
         </TouchableOpacity>
 
         {/* Avis */}
-        <TouchableOpacity style={styles.cardColored}>
+        <TouchableOpacity style={styles.cardColored} onPress={() => router.push("/avisProducteur")}>
           <Image source={require('@/assets/images/stars.png')} style={styles.image} />
           <Text style={styles.cardText}>Voir mes avis</Text>
         </TouchableOpacity>
@@ -39,7 +43,7 @@ export default function HomeScreen() {
         </TouchableOpacity>
 
         {/* Paramètres */}
-        <TouchableOpacity style={styles.cardColored}>
+        <TouchableOpacity style={styles.cardColored} onPress={() => router.push("/parametres")}>
           <Image source={require('@/assets/images/settings.png')} style={styles.image} />
           <Text style={styles.cardText}>Paramètres</Text>
         </TouchableOpacity>

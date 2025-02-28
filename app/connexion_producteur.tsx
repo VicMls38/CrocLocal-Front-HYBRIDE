@@ -10,10 +10,16 @@ import {
   StyleSheet,
 } from "react-native";
 
+import { useRouter } from "expo-router";
+
 export default function LoginScreen() {
+
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
+  
 
   const handleLogin = () => {
     console.log("Connexion avec :", email, password);
@@ -59,7 +65,7 @@ export default function LoginScreen() {
         <Text style={styles.linkText}>Mot de passe oublié ?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => router.push("/inscriptionProducteur")}>
         <Text style={styles.registerText}>
           Je n'ai pas de compte : <Text style={styles.linkText}>m'inscrire</Text>
         </Text>

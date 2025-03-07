@@ -11,17 +11,17 @@ const Navbar = () => {
     <View style={styles.wrapper}>
       <TouchableOpacity onPress={() => router.push("/parametres")}>
         <Ionicons name="settings" size={24} color={"#FFF"} />
-        <Text style={styles.iconText}>Settings</Text>
+        <Text style={styles.iconText}>Paramètres</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
         <Ionicons name="home" size={24} color={"#FFF"} />
-        <Text style={styles.iconText}>Home</Text>
+        <Text style={styles.iconText}>Accueil</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => router.push("/faq")}>
         <Ionicons name="help-circle" size={24} color={"#FFF"} />
-        <Text style={styles.iconText}>Faq</Text>
+        <Text style={styles.iconText}>FAQ</Text>
       </TouchableOpacity>
     </View>
   );
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     padding: 10,
     borderRadius: 16, // Correction du nom de la propriété
+    marginBottom:5,
+    marginRight:5,
+    marginLeft:5,
   },
   iconText: {
     color: "#FFF",

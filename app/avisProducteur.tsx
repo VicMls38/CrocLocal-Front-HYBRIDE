@@ -3,7 +3,7 @@ import { Platform, SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet
 import CarouselLib from '@/components/carouselLib';
 import Icon from "react-native-vector-icons/Ionicons";
 import { useRouter } from "expo-router";
-
+import Navbar from "@/components/navbarProducteur"; 
 
 export default function HomeScreen() {
 
@@ -33,6 +33,8 @@ export default function HomeScreen() {
       <Text style={styles.souligneText}>Voir tous mes avis</Text>
 
       <Image style={styles.carotte} source={require('@/assets/images/carotte.png')} />
+
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }

@@ -3,6 +3,7 @@ import { SafeAreaView, View, Text, Image, TouchableOpacity, Dimensions, StyleShe
 import Icon from "react-native-vector-icons/Ionicons";
 import OrdersCarousel from "@/components/OrdersCarousel";
 import { useRouter } from "expo-router";
+import Navbar from "@/components/navbarProducteur"; 
 
 
 const { width } = Dimensions.get("window");
@@ -65,6 +66,7 @@ export default function OrdersScreen() {
       <TouchableOpacity onPress={() => router.push("/historiqueCommande")}>
         <Text style={styles.historyText}>Voir mon historique de commandes</Text>
       </TouchableOpacity>
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: "center",  // Centrer horizontalement
     overflow: "hidden",  // Pas de débordement de l'image
     alignSelf: "center",  // Centre le conteneur dans la vue
-    marginVertical: 20,  // Ajoute un peu d'espace autour
+    marginVertical: 10,  // Ajoute un peu d'espace autour
   },
   
   planningCard: {

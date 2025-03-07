@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import Navbar from "@/components/navbarProducteur"; 
 
 const FAQScreen = () => {
   return (
@@ -64,6 +65,7 @@ const FAQScreen = () => {
       <Text style={styles.footerText}>
         Besoin de plus d'informations ? Envoie un mail à contact@croclocal.fr
       </Text>
+      <Navbar></Navbar>
     </ScrollView>
   );
 };

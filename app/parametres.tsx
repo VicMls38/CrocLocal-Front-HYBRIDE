@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useRouter } from "expo-router";
+import Navbar from "@/components/navbarProducteur"; 
 
 
 
@@ -149,6 +150,7 @@ const TabTwoScreen = () => {
           source={require("@/assets/images/carotte.png")} style={styles.carotte} // Remplacez par le chemin de votre image
         />
       </View>
+      <Navbar></Navbar>
     </ScrollView>
   );
 };

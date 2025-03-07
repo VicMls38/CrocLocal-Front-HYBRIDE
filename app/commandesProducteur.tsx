@@ -7,10 +7,12 @@ import {
   TouchableOpacity,
   FlatList,
   StyleSheet,
+  ScrollView,
 } from "react-native";
 import { useRouter } from "expo-router";
 import BouncyCheckbox from "react-native-bouncy-checkbox"; // Import de BouncyCheckbox
 import Icon from "react-native-vector-icons/Ionicons";
+import Navbar from "@/components/navbarProducteur"; 
 
 const orders = [
   {
@@ -54,12 +56,14 @@ export default function OrderScreen() {
       <Text style={styles.title}>2 paniers S</Text>
 
       {/* Liste des commandes */}
+      
       <FlatList
         data={orders}
         keyExtractor={(item) => item.id}
         style={styles.orderList} // Appliquer la largeur de 75%
         renderItem={({ item }) => (
           <View style={styles.orderItem}>
+            <ScrollView>
             <View>
               <Text style={styles.orderName}>{item.name}</Text>
               <Text style={styles.orderDetails}>{item.details}</Text>
@@ -75,6 +79,7 @@ export default function OrderScreen() {
               disableText={true} // Désactive le texte interne
               onPress={(isChecked) => handleCheckboxChange(item.id, isChecked)} // Mettre à jour l'état de la case
             />
+            </ScrollView>
           </View>
         )}
       />
@@ -89,6 +94,7 @@ export default function OrderScreen() {
 
       {/* Image en bas */}
       <Image source={require("@/assets/images/carotte_fourche.png")} style={styles.carotte} />
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }

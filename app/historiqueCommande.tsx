@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import { useRouter } from "expo-router";
 import Icon from "react-native-vector-icons/Ionicons";
+import Navbar from "@/components/navbarProducteur"; 
 
 
 
@@ -51,11 +52,14 @@ const App = () => {
         </TouchableOpacity>
       </View>
       <Text style={styles.title}>HISTORIQUE {"\n"}DE COMMANDE</Text>
+      <ScrollView>
       <FlatList
         data={commandHistory}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />
+      </ScrollView>
+      <Navbar></Navbar>
     </View>
   );
 };
@@ -79,6 +83,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   itemContainer: {
+    height:100,
     flexDirection: 'column',
     paddingVertical: 8,
     borderBottomWidth: 1,

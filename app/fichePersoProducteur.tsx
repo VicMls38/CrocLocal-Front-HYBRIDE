@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from "expo-router";
 import Icon from "react-native-vector-icons/Ionicons";
+import Navbar from "@/components/navbarProducteur"; 
 
 
 
@@ -146,6 +147,7 @@ const FichePublique = () => {
           <Text>Contenu des avis...</Text>
         </View>
       )}
+      <Navbar></Navbar>
     </ScrollView>
   );
 };

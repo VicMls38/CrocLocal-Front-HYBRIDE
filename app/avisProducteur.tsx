@@ -1,10 +1,22 @@
 import React from 'react';
 import { Platform, SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import CarouselLib from '@/components/carouselLib';
+import Icon from "react-native-vector-icons/Ionicons";
+import { useRouter } from "expo-router";
+
 
 export default function HomeScreen() {
+
+  const router = useRouter();
+
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+      <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
+        <Icon name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
+      </View>
+      
       <Image source={require('@/assets/images/stars.png')} style={styles.stars} />
 
       <Text style={styles.title}>{"\n\n Tes derniers avis"}</Text>
@@ -31,6 +43,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F9F9F9',
     paddingTop: 20,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
+    alignItems: "center",
+    marginBottom: 10,
   },
   carouselWrapper: {
     width: '100%', 
@@ -60,7 +79,7 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
   carotte: {
-    marginTop: 40,
+    marginTop: 15,
     width: 150, // 🔹 Réduit la largeur
     height: 150, // 🔹 Réduit la hauteur
     resizeMode: 'contain', // ✅ Assure un bon rendu sans déformation

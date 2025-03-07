@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useRouter } from "expo-router";
+import Icon from "react-native-vector-icons/Ionicons";
+
+
 
 const FichePublique = () => {
+
+  const router = useRouter();
+
   const [activeTab, setActiveTab] = useState('Informations');
 
   return (
     <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.push("/parametres")}>
+          <Icon name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.title}>FICHE PUBLIQUE</Text>
 
       <View style={styles.profileContainer}>
@@ -144,6 +156,12 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  header: {
+    width: "90%",
+    height: 60, // Ajuste la hauteur selon ton design
+    justifyContent: "center",
+    alignItems: "flex-start",
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -227,6 +245,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Center items vertically
   },
   productionItem: {
+    width:"20%",
     alignItems: 'center',
     marginHorizontal: 15, // Add some space between items
   },
@@ -268,6 +287,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom:50,
   },
   hoursLabel: {
     fontSize: 14,

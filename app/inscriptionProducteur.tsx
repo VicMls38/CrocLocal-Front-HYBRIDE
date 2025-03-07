@@ -2,11 +2,17 @@ import React, { useState } from "react";
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Picker } from "@react-native-picker/picker";
+import { useRouter } from "expo-router";
+
+
 
 export default function SignupScreen() {
   const [certification, setCertification] = useState("Agriculture Biologique");
   const [conditionsAccepted, setConditionsAccepted] = useState(false);
   const [isNotRobot, setIsNotRobot] = useState(false);
+
+  const router = useRouter();
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,15 +36,28 @@ export default function SignupScreen() {
 
         {/* Conditions à accepter */}
         <View style={styles.checkboxContainer}>
-        <BouncyCheckbox onPress={(isChecked: boolean) => {}} />
+          <BouncyCheckbox
+            size={18}
+            fillColor="#D26D34"
+            unfillColor="#FFF"
+            disableText={true} // Désactive le texte interne
+            onPress={(isChecked: boolean) => {}}
+          />
           <Text style={styles.checkboxText}>J’accepte les conditions générales</Text>
         </View>
 
-        {/* Vérification CAPTCHA */}
         <View style={styles.checkboxContainer}>
-        <BouncyCheckbox onPress={(isChecked: boolean) => {}} />
+          <BouncyCheckbox
+            size={18}
+            fillColor="#D26D34"
+            unfillColor="#FFF"
+            disableText={true} // Désactive le texte interne
+            onPress={(isChecked: boolean) => {}}
+          />
           <Text style={styles.checkboxText}>Je ne suis pas un robot</Text>
         </View>
+
+
 
         
         <TouchableOpacity>
@@ -51,7 +70,7 @@ export default function SignupScreen() {
         </TouchableOpacity>
 
         {/* Lien vers la page de connexion */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/connexionProducteur")}>
           <Text style={styles.linkText}>Me connecter</Text>
         </TouchableOpacity>
       </View>
@@ -116,13 +135,13 @@ const styles = StyleSheet.create({
   },
   checkboxContainer: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "center", // Garde le texte aligné verticalement
     marginBottom: 5,
   },
   checkboxText: {
-    marginLeft: 8,
     fontSize: 14,
     color: "#333",
+    marginLeft: 8, // Ajoute juste un petit espace entre la checkbox et le texte
   },
   linkText: {
     color: "#D26D34",

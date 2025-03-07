@@ -1,5 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { useRouter } from "expo-router";
+import Icon from "react-native-vector-icons/Ionicons";
+
+
+
 
 interface CommandHistoryItem {
   name: string;
@@ -19,6 +24,10 @@ const commandHistory: CommandHistoryItem[] = [
 ];
 
 const App = () => {
+
+  
+  const router = useRouter();
+
   const renderItem = ({ item }: { item: CommandHistoryItem }) => (
     <View style={styles.itemContainer}>
       <Text style={styles.name}>{item.name}</Text>
@@ -36,6 +45,11 @@ const App = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
+          <Icon name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
       <Text style={styles.title}>HISTORIQUE {"\n"}DE COMMANDE</Text>
       <FlatList
         data={commandHistory}
@@ -51,6 +65,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     backgroundColor: '#fff',
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "90%",
+    alignItems: "center",
+    marginBottom: 10,
   },
   title: {
     fontSize: 24,

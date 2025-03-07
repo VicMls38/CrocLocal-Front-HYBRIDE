@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     backgroundColor: '#F5F5F5',
+    marginTop:5,
   },
   title: {
     fontSize: 24,
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    textAlign: 'flex-start',
+    textAlign: 'left',
     marginBottom: 30,
     color: '#555',
   },

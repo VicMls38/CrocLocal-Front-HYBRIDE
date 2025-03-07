@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useRouter } from "expo-router";
+
+
 
 const TabTwoScreen = () => {
   const [collapsedSections, setCollapsedSections] = useState({
@@ -12,16 +15,21 @@ const TabTwoScreen = () => {
     usageConditions: true,
   });
 
-  const toggleSection = (section) => {
+  const toggleSection = (section: string) => {
     setCollapsedSections((prevState) => ({
       ...prevState,
       [section]: !prevState[section],
     }));
   };
 
+  const router = useRouter();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
+          <Icon name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
         <Text style={styles.headerText}>TES PARAMÈTRES</Text>
       </View>
 
@@ -44,7 +52,7 @@ const TabTwoScreen = () => {
           </Text>
         )}
 
-        <TouchableOpacity onPress={() => toggleSection('publicPage')} style={styles.sectionItem}>
+        <TouchableOpacity  onPress={() => router.push("/fichePersoProducteur")} style={styles.sectionItem}>
           <View style={styles.sectionItemContent}>
             <Icon name="globe" size={24} color="#4CAF50" />
             <Text style={styles.sectionItemText}>Page publique</Text>
@@ -152,7 +160,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   header: {
-    marginBottom: 20,
+    marginTop: 30,
+    marginBottom: 30,
   },
   headerText: {
     fontSize: 24,

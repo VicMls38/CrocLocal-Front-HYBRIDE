@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet, Link } from 'react-native';
+import { SafeAreaView, View, Text, Image, ImageBackground, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from "expo-router";
 
 
@@ -18,7 +18,7 @@ export default function HomeScreen() {
       <Text style={styles.question}>Qui es-tu ?</Text>
 
       {/* Boutons */}
-      <TouchableOpacity style={styles.button} onPress={() => router.push("/connexion_producteur")}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push("/connexionProducteur")}>
         <Text style={styles.buttonText}>Un producteur</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>

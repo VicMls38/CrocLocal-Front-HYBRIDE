@@ -29,30 +29,31 @@ const OrdersCarousel = () => {
         contentContainerStyle={styles.scrollContent}
         style={styles.scrollView}
       >
-        {orders.map((order, index) => (
-        <TouchableOpacity onPress={() => router.push("/commandesProducteur")}>
-          <View key={index} style={styles.card}>
-            {/* 🔹 Statut de la commande */}
-            <View style={styles.statusWrapper}>
-              <Text style={[styles.status, { color: getStatusColor(order.status) }]}>{order.status}</Text>
-              {order.status === "Prête" && <Icon name="checkmark-circle" size={20} color="#70B54D" />}
+        {orders.map((order) => (
+          <TouchableOpacity onPress={() => router.push("/commandesProducteur")} key={order.id}>
+            <View style={styles.card}>
+              {/* 🔹 Statut de la commande */}
+              <View style={styles.statusWrapper}>
+                <Text style={[styles.status, { color: getStatusColor(order.status) }]}>{order.status}</Text>
+                {order.status === "Prête" && <Icon name="checkmark-circle" size={20} color="#70B54D" />}
+              </View>
+
+              {/* 📸 Image du panier */}
+              <Image source={order.image} style={styles.image} />
+
+              {/* 📦 Titre de la commande */}
+              <Text style={styles.title}>{order.title}</Text>
             </View>
-
-            {/* 📸 Image du panier */}
-            <Image source={order.image} style={styles.image} />
-
-            {/* 📦 Titre de la commande */}
-            <Text style={styles.title}>{order.title}</Text>
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
         ))}
+
       </ScrollView>
     </View>
   );
 };
 
 // Fonction pour déterminer la couleur du texte selon le statut
-const getStatusColor = (status) => {
+const getStatusColor = (status: string) => {
   switch (status) {
     case "Prête":
       return "#4CAF50"; // Vert pour "Prête"

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   View,
   Text,
   Image,
   TouchableOpacity,
-  StyleSheet,
   FlatList,
-  CheckBox,
+  StyleSheet,
 } from "react-native";
-
+import { useRouter } from "expo-router";
+import BouncyCheckbox from "react-native-bouncy-checkbox"; // Import de BouncyCheckbox
+import Icon from "react-native-vector-icons/Ionicons";
 
 const orders = [
   {
@@ -27,16 +28,27 @@ const orders = [
 ];
 
 export default function OrderScreen() {
+  const [checkedOrders, setCheckedOrders] = useState({});
+  const router = useRouter();
+
+  // Fonction pour gérer le changement de sélection des commandes
+  const handleCheckboxChange = (id, value) => {
+    setCheckedOrders((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.backButton}>{"<"}</Text>
+        <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
+          <Icon name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
         <Text style={styles.statusText}>À préparer</Text>
       </View>
-      
+
       {/* Image et titre */}
       <Image source={require("@/assets/images/panier_s.png")} style={styles.image} />
       <Text style={styles.title}>2 paniers S</Text>
@@ -45,7 +57,7 @@ export default function OrderScreen() {
       <FlatList
         data={orders}
         keyExtractor={(item) => item.id}
-        style={styles.orderList}  // Appliquer la largeur de 75%
+        style={styles.orderList} // Appliquer la largeur de 75%
         renderItem={({ item }) => (
           <View style={styles.orderItem}>
             <View>
@@ -53,7 +65,16 @@ export default function OrderScreen() {
               <Text style={styles.orderDetails}>{item.details}</Text>
               <Text style={styles.orderDate}>{item.date}</Text>
             </View>
-            <CheckBox value={false} />
+            
+            {/* Remplacer CheckBox par BouncyCheckbox */}
+            <BouncyCheckbox
+              size={30}
+              fillColor="#D26D34"
+              unfillColor="#FFF"
+              isChecked={checkedOrders[item.id]} // Vérifier l'état de la case
+              disableText={true} // Désactive le texte interne
+              onPress={(isChecked) => handleCheckboxChange(item.id, isChecked)} // Mettre à jour l'état de la case
+            />
           </View>
         )}
       />
@@ -150,4 +171,3 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
 });
-

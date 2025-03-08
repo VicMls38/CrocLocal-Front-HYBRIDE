@@ -28,6 +28,7 @@ const TabTwoScreen = () => {
   const router = useRouter();
 
   return (
+    <>
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
@@ -152,8 +153,10 @@ const TabTwoScreen = () => {
           source={require("@/assets/images/carotte.png")} style={styles.carotte} // Remplacez par le chemin de votre image
         />
       </View>
-      <Navbar></Navbar>
+
     </ScrollView>
+    <Navbar></Navbar>
+  </>
   );
 };
 

@@ -4,6 +4,7 @@ import Navbar from "@/components/navbarProducteur";
 
 const FAQScreen = () => {
   return (
+    <>
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>
         FOIRE AUX {"\n"}
@@ -65,8 +66,9 @@ const FAQScreen = () => {
       <Text style={styles.footerText}>
         Besoin de plus d'informations ? Envoie un mail à contact@croclocal.fr
       </Text>
-      <Navbar></Navbar>
     </ScrollView>
+    <Navbar></Navbar>
+    </>
   );
 };
 
@@ -75,12 +77,11 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 20,
     backgroundColor: '#F5F5F5',
-    marginTop:5,
   },
   title: {
     fontSize: 24,
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   titleBold: {
     fontSize: 24,
@@ -130,6 +131,7 @@ const styles = StyleSheet.create({
   footerText: {
     textAlign: 'center',
     marginTop: 20,
+    marginBottom: 80,
     color: '#555',
   },
   btnSubmit: {

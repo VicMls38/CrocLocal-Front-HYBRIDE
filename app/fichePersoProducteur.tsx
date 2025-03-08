@@ -33,10 +33,11 @@ const FichePublique = () => {
           style={styles.profileImage}
         />
         <View style={styles.modifySection}>
-          <Text style={styles.name}>Chez Saladé</Text>
+          <Text style={styles.name}>{"\n"}Chez Saladé</Text>
         </View>
         <View style={styles.modifySection}>
           <Text style={styles.description}>
+            {"\n\n"}
             Découvrez les trésors cachés de nos producteurs et recettes sur place,
             dans une démarche bio !
           </Text>
@@ -44,6 +45,7 @@ const FichePublique = () => {
             <Text style={styles.modifyButtonText}>Modifier</Text>
           </TouchableOpacity>
         </View>
+
       </View>
 
       <View style={styles.infoContainer}>
@@ -102,7 +104,7 @@ const FichePublique = () => {
                   source={require('@/assets/images/produitTransforme.png')}
                   style={styles.productionImage}
                 />
-                <Text style={styles.productionText}>Produits transformés</Text>
+                <Text style={styles.productionText}>Produits {"\n"} transformés</Text>
               </View>
             </View>
           </View>
@@ -196,11 +198,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 5,
   },
-  description: {
-    textAlign: 'center',
-    marginBottom: 20,
-    flex: 1,
+  descriptionContainer: {
+    width: '80%',
+    alignSelf: 'center',  // Centre horizontalement
+    justifyContent: 'center',  // Centre verticalement
+    textAlign: 'center',  // Centrer le texte
+    marginBottom: 20,  // Espacement sous la description
+    position: 'relative',  // Permet de positionner le bouton "Modifier" par rapport à ce conteneur
   },
+  
+  description: {
+    fontSize: 16,  // Taille du texte
+    marginBottom: 20,  // Espacement sous la description
+    lineHeight: 24,  // Ajuste la hauteur de ligne pour rendre le texte plus lisible
+  },
+  
+
+  
   infoContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -247,25 +261,27 @@ const styles = StyleSheet.create({
   },
   productionContainer: {
     flexDirection: 'row',
-    justifyContent: 'center', // Center items horizontally
-    alignItems: 'center', // Center items vertically
+    justifyContent: 'space-between', // Espacement uniforme entre les éléments
+    alignItems: 'center',
+    width: '100%', // S'assurer que la section prend toute la largeur
+    paddingHorizontal: 20, // Ajouter un padding pour éviter que les éléments touchent les bords
   },
   productionItem: {
-    width:"20%",
+    flex: 1, // Permet un espacement égal entre les items
     alignItems: 'center',
-    marginHorizontal: 15, // Add some space between items
   },
   productionImage: {
-    width: '100%',
-    height: undefined, // Auto height
-    aspectRatio: 1, // Maintain aspect ratio
+    width: 60, // Taille fixe pour uniformiser
+    height: 60,
     resizeMode: 'contain',
   },
   productionText: {
     marginTop: 5,
     fontSize: 14,
     textAlign: 'center',
+    flexWrap: 'wrap', // S'assurer que le texte s'affiche correctement
   },
+  
   certificationContainer: {
     alignItems: 'flex-start',
   },
@@ -281,9 +297,11 @@ const styles = StyleSheet.create({
   },
   modifyButton: {
     backgroundColor: '#e0e0e0',
-    padding: 5,
+    padding: 8,
     borderRadius: 5,
-    alignSelf: 'flex-end', // Align button to the right
+    position: 'absolute', // Position absolue pour le bouton
+    top: 0, // Positionner en haut
+    right: 0, // Positionner à droite
   },
   modifyButtonText: {
     fontSize: 14,

@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 30,
   },
   subtitle: {
     fontSize: 14,
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 50,
   },
   gridContainer: {
     flexDirection: 'row',

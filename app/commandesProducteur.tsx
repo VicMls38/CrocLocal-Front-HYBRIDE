@@ -7,10 +7,9 @@ import {
   TouchableOpacity,
   FlatList,
   StyleSheet,
-  ScrollView,
 } from "react-native";
 import { useRouter } from "expo-router";
-import BouncyCheckbox from "react-native-bouncy-checkbox"; // Import de BouncyCheckbox
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Icon from "react-native-vector-icons/Ionicons";
 import Navbar from "@/components/navbarProducteur"; 
 
@@ -33,7 +32,6 @@ export default function OrderScreen() {
   const [checkedOrders, setCheckedOrders] = useState<{ [key: string]: boolean }>({});
   const router = useRouter();
 
-  // Fonction pour gérer le changement de sélection des commandes
   const handleCheckboxChange = (id: string, value: boolean) => {
     setCheckedOrders((prev) => ({
       ...prev,
@@ -56,30 +54,28 @@ export default function OrderScreen() {
       <Text style={styles.title}>2 paniers S</Text>
 
       {/* Liste des commandes */}
-      
       <FlatList
         data={orders}
         keyExtractor={(item) => item.id}
-        style={styles.orderList} // Appliquer la largeur de 75%
+        style={styles.orderList}
         renderItem={({ item }) => (
           <View style={styles.orderItem}>
-            <ScrollView>
-            <View>
+            {/* Texte de la commande */}
+            <View style={styles.orderTextContainer}>
               <Text style={styles.orderName}>{item.name}</Text>
               <Text style={styles.orderDetails}>{item.details}</Text>
               <Text style={styles.orderDate}>{item.date}</Text>
             </View>
-            
-            {/* Remplacer CheckBox par BouncyCheckbox */}
+
+            {/* Checkbox alignée à droite */}
             <BouncyCheckbox
               size={30}
               fillColor="#D26D34"
               unFillColor="#FFF"
-              isChecked={checkedOrders[item.id]} // Vérifier l'état de la case
-              disableText={true} // Désactive le texte interne
-              onPress={(isChecked) => handleCheckboxChange(item.id, isChecked)} // Mettre à jour l'état de la case
+              isChecked={checkedOrders[item.id]}
+              disableText={true}
+              onPress={(isChecked) => handleCheckboxChange(item.id, isChecked)}
             />
-            </ScrollView>
           </View>
         )}
       />
@@ -94,7 +90,7 @@ export default function OrderScreen() {
 
       {/* Image en bas */}
       <Image source={require("@/assets/images/carotte_fourche.png")} style={styles.carotte} />
-      <Navbar></Navbar>
+      <Navbar />
     </SafeAreaView>
   );
 }
@@ -112,10 +108,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "90%",
   },
-  backButton: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
   statusText: {
     color: "#D26D34",
   },
@@ -127,18 +119,21 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 30,
   },
   orderList: {
-    width: "75%", // FlatList prend 75% de la largeur de l'écran
+    width: "75%",
   },
   orderItem: {
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
+    justifyContent: "space-between", // Sépare le texte et la checkbox
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#DDD",
+  },
+  orderTextContainer: {
+    flex: 1, // Permet au texte de prendre tout l'espace disponible à gauche
   },
   orderName: {
     fontWeight: "bold",
@@ -150,7 +145,7 @@ const styles = StyleSheet.create({
     color: "#888",
   },
   acceptButton: {
-    marginBottom: 10,
+    marginBottom: 15,
     backgroundColor: "#4CAF50",
     padding: 10,
     borderRadius: 8,
@@ -173,7 +168,9 @@ const styles = StyleSheet.create({
     width: 125,
     height: 125,
     resizeMode: "contain",
-    marginTop: 30,
-    marginBottom: 50,
+    marginTop: 25,
+    marginBottom: 100,
   },
 });
+
+// export default OrderScreen; (removed duplicate export)

@@ -13,6 +13,7 @@ interface CommandHistoryItem {
   price: string;
   date: string;
   status: string;
+  afficher: string;
 }
 
 const commandHistory: CommandHistoryItem[] = [
@@ -37,7 +38,7 @@ const App = () => {
         {item.price && <Text style={styles.price}>{item.price}</Text>}
       </View>
       <Text style={styles.date}>{item.date}</Text>
-      <Text style={styles.status}>{item.status}</Text>
+      <Text>{item.status}</Text>
       <TouchableOpacity>
       <Text style={styles.afficher}>{item.afficher}</Text>
       </TouchableOpacity>

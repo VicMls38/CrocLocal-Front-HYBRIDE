@@ -12,13 +12,12 @@ const TabTwoScreen = () => {
     usageConditions: true,
   });
 
-  const toggleSection = (section) => {
+  const toggleSection = (section: keyof typeof collapsedSections) => {
     setCollapsedSections((prevState) => ({
       ...prevState,
       [section]: !prevState[section],
     }));
   };
-
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>

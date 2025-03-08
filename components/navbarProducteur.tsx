@@ -4,49 +4,64 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from "expo-router";
 
 const Navbar = () => {
-
   const router = useRouter();
 
   return (
-    <View style={styles.wrapper}>
-      <TouchableOpacity onPress={() => router.push("/parametres")}>
-        <Ionicons name="settings" size={24} color={"#FFF"} />
-        <Text style={styles.iconText}>Paramètres</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.wrapper}>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/parametres")}>
+          <Ionicons name="settings" size={24} color={"#FFF"} />
+          <Text style={styles.iconText}>Paramètres</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.push("/accueilProducteur")}>
-        <Ionicons name="home" size={24} color={"#FFF"} />
-        <Text style={styles.iconText}>Accueil</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/accueilProducteur")}>
+          <Ionicons name="home" size={24} color={"#FFF"} />
+          <Text style={styles.iconText}>Accueil</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.push("/faq")}>
-        <Ionicons name="help-circle" size={24} color={"#FFF"} />
-        <Text style={styles.iconText}>FAQ</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/faq")}>
+          <Ionicons name="help-circle" size={24} color={"#FFF"} />
+          <Text style={styles.iconText}>FAQ</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     position: "absolute",
-    bottom: 0,
+    bottom: 5,
     left: 0,
     right: 0,
+    alignItems: "center",
+  },
+  wrapper: {
+    width: "95%",
+    height: 65,
     backgroundColor: "#70B54D",
-    zIndex: 1,
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    padding: 10,
-    borderRadius: 16, // Correction du nom de la propriété
-    marginBottom:5,
-    marginRight:5,
-    marginLeft:5,
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderRadius: 16,
+    paddingHorizontal: 20, // 🔹 Ajout d'un padding horizontal pour éviter les bords collés
+    elevation: 5,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+  navItem: {
+    flex: 1, // 🔹 Permet un espacement égal
+    alignItems: "center",
+    justifyContent: "center",
   },
   iconText: {
     color: "#FFF",
     fontSize: 12,
-  }
+    marginTop: 4, // 🔹 Espacement uniforme entre icône et texte
+    textAlign: "center",
+  },
 });
 
 export default Navbar;

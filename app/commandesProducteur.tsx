@@ -30,11 +30,11 @@ const orders = [
 ];
 
 export default function OrderScreen() {
-  const [checkedOrders, setCheckedOrders] = useState({});
+  const [checkedOrders, setCheckedOrders] = useState<{ [key: string]: boolean }>({});
   const router = useRouter();
 
   // Fonction pour gérer le changement de sélection des commandes
-  const handleCheckboxChange = (id, value) => {
+  const handleCheckboxChange = (id: string, value: boolean) => {
     setCheckedOrders((prev) => ({
       ...prev,
       [id]: value,
@@ -74,7 +74,7 @@ export default function OrderScreen() {
             <BouncyCheckbox
               size={30}
               fillColor="#D26D34"
-              unfillColor="#FFF"
+              unFillColor="#FFF"
               isChecked={checkedOrders[item.id]} // Vérifier l'état de la case
               disableText={true} // Désactive le texte interne
               onPress={(isChecked) => handleCheckboxChange(item.id, isChecked)} // Mettre à jour l'état de la case

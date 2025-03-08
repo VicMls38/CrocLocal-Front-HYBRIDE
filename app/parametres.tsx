@@ -7,7 +7,9 @@ import Navbar from "@/components/navbarProducteur";
 
 
 const TabTwoScreen = () => {
-  const [collapsedSections, setCollapsedSections] = useState({
+  type Section = 'profile' | 'publicPage' | 'password' | 'accountManagement' | 'salesConditions' | 'usageConditions';
+
+  const [collapsedSections, setCollapsedSections] = useState<Record<Section, boolean>>({
     profile: true,
     publicPage: true,
     password: true,
@@ -16,7 +18,7 @@ const TabTwoScreen = () => {
     usageConditions: true,
   });
 
-  const toggleSection = (section: string) => {
+  const toggleSection = (section: Section) => {
     setCollapsedSections((prevState) => ({
       ...prevState,
       [section]: !prevState[section],

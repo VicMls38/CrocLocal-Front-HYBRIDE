@@ -17,7 +17,7 @@ export default function HomeScreen() {
       </TouchableOpacity>
       </View>
       
-      <Image source={require('@/assets/images/stars.png')} style={styles.stars} />
+      <Image source={require('@/assets/images/stars.png')} />
 
       <Text style={styles.title}>{"\n\n Tes derniers avis"}</Text>
 

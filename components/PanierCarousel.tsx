@@ -48,7 +48,7 @@ const PanierCarousel = () => {
 };
 
 // Fonction pour déterminer la couleur du texte selon le statut
-const getStatusColor = (status) => {
+const getStatusColor = (status: string) => {
   switch (status) {
     case "Prête":
       return "#4CAF50"; // Vert pour "Prête"

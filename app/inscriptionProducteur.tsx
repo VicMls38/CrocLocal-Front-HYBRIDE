@@ -39,7 +39,7 @@ export default function SignupScreen() {
           <BouncyCheckbox
             size={18}
             fillColor="#D26D34"
-            unfillColor="#FFF"
+            unFillColor="#FFF"
             disableText={true} // Désactive le texte interne
             onPress={(isChecked: boolean) => {}}
           />
@@ -50,7 +50,7 @@ export default function SignupScreen() {
           <BouncyCheckbox
             size={18}
             fillColor="#D26D34"
-            unfillColor="#FFF"
+            unFillColor="#FFF"
             disableText={true} // Désactive le texte interne
             onPress={(isChecked: boolean) => {}}
           />

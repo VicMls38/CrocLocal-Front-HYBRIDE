@@ -13,6 +13,7 @@ const FichePublique = () => {
   const [activeTab, setActiveTab] = useState('Informations');
 
   return (
+    <>
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.push("/parametres")}>
@@ -147,8 +148,10 @@ const FichePublique = () => {
           <Text>Contenu des avis...</Text>
         </View>
       )}
-      <Navbar></Navbar>
+      
     </ScrollView>
+    <Navbar></Navbar>
+    </>
   );
 };
 
@@ -157,6 +160,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
+    marginBottom:50,
   },
   header: {
     width: "90%",

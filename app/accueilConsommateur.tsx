@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image, ImageBackground, StyleSheet } from 'react-native';
 import { useRouter } from "expo-router";
+import Navbar from "@/components/navbarConsommateur"; 
 
 export default function HomeScreen() {
 
@@ -48,7 +49,7 @@ export default function HomeScreen() {
 
       {/* Carotte en bas */}
       <Image source={require('@/assets/images/carotte_panier.png')} style={styles.carotte} />
-
+    <Navbar></Navbar>
     </SafeAreaView>
   );
 }

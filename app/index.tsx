@@ -21,7 +21,7 @@ export default function HomeScreen() {
       <TouchableOpacity style={styles.button} onPress={() => router.push("/connexionProducteur")}>
         <Text style={styles.buttonText}>Un producteur</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push("/connexionConsommateur")}>
         <Text style={styles.buttonText}>Un consommateur</Text>
       </TouchableOpacity>
 

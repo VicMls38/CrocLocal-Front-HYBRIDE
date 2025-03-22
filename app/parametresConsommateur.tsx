@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Navbar from "@/components/navbarConsommateur"; 
 
 const TabTwoScreen = () => {
   const [collapsedSections, setCollapsedSections] = useState({
@@ -143,6 +144,7 @@ const TabTwoScreen = () => {
           source={require("@/assets/images/carotte.png")} style={styles.carotte} // Remplacez par le chemin de votre image
         />
       </View>
+      <Navbar></Navbar>
     </ScrollView>
   );
 };

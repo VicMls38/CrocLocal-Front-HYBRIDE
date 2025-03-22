@@ -18,12 +18,12 @@ export default function RecipesScreen() {
 
   // Données pour les recettes - vous pouvez en ajouter autant que vous voulez
   const recipes = [
-    { id: '1', title: 'Poulet et haricot verts', image: require('@/assets/images/recettes/poulet_haricot.png') },
-    { id: '2', title: 'Salade César', image: require('@/assets/images/recettes/salade_cesar.png') },
-    { id: '3', title: 'Soupe', image: require('@/assets/images/recettes/soupe_froide.png') },
-    { id: '4', title: 'Poulet et haricot verts', image: require('@/assets/images/recettes/poulet_haricot.png') },
-    { id: '5', title: 'Salade César', image: require('@/assets/images/recettes/salade_cesar.png') },
-    { id: '6', title: 'Soupe', image: require('@/assets/images/recettes/soupe_froide.png') },
+    { id: '1', title: 'Poulet et haricot verts', image: require('@/assets/images/tips/boite_legumes.png') },
+    { id: '2', title: 'Salade César', image: require('@/assets/images/tips/eplucher_legumes.png') },
+    { id: '3', title: 'Soupe', image: require('@/assets/images/tips/laver_legumes.png') },
+    { id: '1', title: 'Poulet et haricot verts', image: require('@/assets/images/tips/boite_legumes.png') },
+    { id: '2', title: 'Salade César', image: require('@/assets/images/tips/eplucher_legumes.png') },
+    { id: '3', title: 'Soupe', image: require('@/assets/images/tips/laver_legumes.png') },
     // Ajoutez autant de recettes que vous voulez ici
   ];
 
@@ -48,8 +48,8 @@ export default function RecipesScreen() {
       <ScrollView style={styles.scrollContent}>
         {/* Title Section */}
         <View style={styles.titleContainer}>
-          <Text style={styles.subtitle}>TES IDÉES RECETTES</Text>
-          <Text style={styles.title}>DE SAISON</Text>
+          <Text style={styles.subtitle}>ICI RETROUVE</Text>
+          <Text style={styles.title}>TES TIPS</Text>
         </View>
         
         {/* Search Bar - Corrigée pour être interactive */}

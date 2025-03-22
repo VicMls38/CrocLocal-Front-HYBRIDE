@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SafeAreaView, View, Text, Image, TouchableOpacity, TextInput, StyleSheet, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import PanierCarousel from "@/components/PanierCarousel";
+import Navbar from "@/components/navbarConsommateur"; 
 
 export default function OrderSelectionScreen() {
   const [validated, setValidated] = useState(false);
@@ -68,6 +69,7 @@ export default function OrderSelectionScreen() {
           </TouchableOpacity>
         </>
       )}
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }

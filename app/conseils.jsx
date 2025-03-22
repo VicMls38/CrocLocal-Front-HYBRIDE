@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useRouter } from "expo-router";
-import Navbar from "@/components/navbarProducteur"; 
+import Navbar from "@/components/navbarConsommateur"; 
 
 export default function ConseilsScreen() {
 
@@ -59,21 +59,21 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 18,
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
     color: '#3D2935',
     paddingHorizontal: 15,
   },
   mainImage: {
     width: '90%',
-    height: 200,
-    marginTop: 40,
+    height: 180,
+    marginTop: 15,
     borderRadius: 10,
-    marginBottom: 40,
+    marginBottom: 15,
   },
   categoriesTitle: {
     fontSize: 25,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 15,
   },
   categoriesContainer: {
     flexDirection: 'row',
@@ -82,11 +82,11 @@ const styles = StyleSheet.create({
   },
   categoryButton: {
     alignItems: 'center',
-    width: '30%',
+    
   },
   categoryImage: {
-    width: 130,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 10,
     marginBottom: 5,
   },

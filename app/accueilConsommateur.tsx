@@ -18,7 +18,7 @@ export default function HomeScreen() {
       <View style={styles.gridContainer}>
         
         {/* Commandes (image en fond, sans couleur de fond) */}
-        <TouchableOpacity style={styles.card} onPress={() => router.push("/AccueilCommandesProducteur")}>
+        <TouchableOpacity style={styles.card} onPress={() => router.push("/historiqueCommandeConsommateur")}>
           <ImageBackground 
             source={require('@/assets/images/commande_croque.png')}  
             style={styles.imageBackground} 
@@ -33,13 +33,13 @@ export default function HomeScreen() {
 
         <View style={styles.flexPosition}>
           {/* Avis */}
-          <TouchableOpacity style={styles.cardColored} onPress={() => router.push("/avisProducteur")}>
+          <TouchableOpacity style={styles.cardColored} onPress={() => router.push("/historiqueCommandeConsommateur")}>
             <Image source={require('@/assets/images/basket_historique.png')} style={styles.image} />
             <Text style={styles.cardText}>Historique des commandes</Text>
           </TouchableOpacity>
 
           {/* Paramètres */}
-          <TouchableOpacity style={styles.cardColored} onPress={() => router.push("/parametres")}>
+          <TouchableOpacity style={styles.cardColored} onPress={() => router.push("/parametresConsommateur")}>
             <Image source={require('@/assets/images/settings.png')} style={styles.image} />
             <Text style={styles.cardText}>Paramètres</Text>
           </TouchableOpacity>

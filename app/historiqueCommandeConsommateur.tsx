@@ -1,12 +1,14 @@
 import React from "react";
 import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import Navbar from "@/components/navbarConsommateur"; 
+import { router } from 'expo-router';
 
 export default function OrderHistoryScreen() {
   return (
     <SafeAreaView style={styles.container}>
       {/* Retour */}
-      <TouchableOpacity style={styles.backButton}>
+      <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Icon name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
 
@@ -36,6 +38,7 @@ export default function OrderHistoryScreen() {
           </View>
         ))}
       </ScrollView>
+      <Navbar></Navbar>
     </SafeAreaView>
   );
 }

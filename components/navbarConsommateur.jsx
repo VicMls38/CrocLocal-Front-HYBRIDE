@@ -9,20 +9,32 @@ const Navbar = () => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/parametresConsommateur")}>
-          <Ionicons name="settings" size={24} color={"#FFF"} />
-          <Text style={styles.iconText}>Paramètres</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity style={styles.navItem} onPress={() => router.push("/accueilConsommateur")}>
           <Ionicons name="home" size={24} color={"#FFF"} />
           <Text style={styles.iconText}>Accueil</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/conseils")}>
-          <Ionicons name="help-circle" size={24} color={"#FFF"} />
-          <Text style={styles.iconText}>Conseils</Text>
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/conseils")}> 
+          <Ionicons name="information-circle" size={24} color="#FFF" />
+          <Text style={styles.iconText}>conseils</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/maps")}> 
+          <Ionicons name="location" size={24} color="#FFF" />
+          <Text style={styles.iconText}>maps</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/wishlist")}> 
+          <Ionicons name="heart" size={24} color="#FFF" />
+          <Text style={styles.iconText}>wishlist</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.navItem} onPress={() => router.push("/panierConsommateur")}> 
+          <Ionicons name="basket" size={24} color="#FFF" />
+          <Text style={styles.iconText}>paniers</Text>
+        </TouchableOpacity>
+
       </View>
     </View>
   );

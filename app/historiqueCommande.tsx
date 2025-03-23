@@ -5,8 +5,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import Navbar from "@/components/navbarProducteur"; 
 
 
-
-
 interface CommandHistoryItem {
   name: string;
   items: string;

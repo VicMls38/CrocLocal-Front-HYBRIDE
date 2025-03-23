@@ -152,6 +152,11 @@ const FichePublique = () => {
           <Text>Contenu des avis...</Text>
         </View>
       )}
+
+      {/* Pay Button */}
+      <TouchableOpacity style={styles.payButton} onPress={() => router.push("/choisiTonPanierConsommateur")}>
+        <Text style={styles.payButtonText}>Choisir ce Producteur</Text>
+      </TouchableOpacity>
       
     </ScrollView>
     <Navbar></Navbar>
@@ -213,6 +218,18 @@ const styles = StyleSheet.create({
     fontSize: 16,  // Taille du texte
     marginBottom: 20,  // Espacement sous la description
     lineHeight: 24,  // Ajuste la hauteur de ligne pour rendre le texte plus lisible
+  },  
+  payButton: {
+    backgroundColor: '#4CAF50',
+    paddingVertical: 12,
+    borderRadius: 4,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  payButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
   },
   
 

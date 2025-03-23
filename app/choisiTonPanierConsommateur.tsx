@@ -3,27 +3,28 @@ import { SafeAreaView, View, Text, Image, TouchableOpacity, TextInput, StyleShee
 import Icon from "react-native-vector-icons/Ionicons";
 import PanierCarousel from "@/components/PanierCarousel";
 import Navbar from "@/components/navbarConsommateur"; 
+import { router } from 'expo-router';
 
 export default function OrderSelectionScreen() {
   const [validated, setValidated] = useState(false);
   const [quantity, setQuantity] = useState("1");
-  const [date, setDate] = useState("25/06/2025 - 14h30");
+  const [date, setDate] = useState("18/06/2025 - 14h30");
   const [toteBags, setToteBags] = useState("0");
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Retour */}
-      <TouchableOpacity style={styles.backButton}>
+      {/* Bouton Retour */}
+      <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
         <Icon name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
 
       {/* Titre */}
       <Text style={styles.title}>CHOISIS <Text style={styles.bold}>TON PANIER</Text></Text>
 
-            {/* Carrousel des commandes */}
-        <View style={styles.carouselWrapper}>
-            <PanierCarousel />
-        </View>
+      {/* Carrousel des paniers */}
+      <View style={styles.carouselWrapper}>
+        <PanierCarousel />
+      </View>
       
       {/* Champs de saisie */}
       <Text style={styles.label}>Combien de panier souhaites-tu commander ?</Text>
@@ -32,6 +33,7 @@ export default function OrderSelectionScreen() {
         value={quantity}
         keyboardType="numeric"
         onChangeText={setQuantity}
+        placeholder="1"
       />
       
       <Text style={styles.label}>Quand souhaites-tu la récupérer ?</Text>
@@ -39,37 +41,60 @@ export default function OrderSelectionScreen() {
         style={styles.input}
         value={date}
         onChangeText={setDate}
+        placeholder="18/06/2025 - 14h30"
       />
       
-      
+      {/* Section tote-bag */}
       <View style={styles.toteBagContainer}>
-        <Image source={require("@/assets/images/tote-bag.png")} style={styles.toteBagImage} />
-        <Text style={styles.label}>Combien de tote-bags {"\n"} souhaites-tu commander ?</Text>
-        <TextInput
-          style={styles.inputSmall}
-          value={toteBags}
-          keyboardType="numeric"
-          onChangeText={setToteBags}
-        />
+        <View style={styles.toteBagImageContainer}>
+          <Image source={require("@/assets/images/tote-bag.png")} style={styles.toteBagImage} />
+        </View>
+        <View style={styles.toteBagContent}>
+          <Text style={styles.label}>Combien de tote-bags souhaites-tu commander ?</Text>
+          <TextInput
+            style={styles.toteBagInput}
+            value={toteBags}
+            keyboardType="numeric"
+            onChangeText={setToteBags}
+            placeholder="0"
+          />
+        </View>
       </View>
       
-      {/* Bouton Valider ou Options */}
-      {!validated ? (
-        <TouchableOpacity style={styles.validateButton} onPress={() => setValidated(true)}>
-          <Text style={styles.buttonText}>Valider</Text>
-        </TouchableOpacity>
-      ) : (
-        <>
-          <Icon name="checkmark-circle" size={32} color="green" style={styles.checkIcon} />
-          <TouchableOpacity style={styles.commandButton}>
-            <Text style={styles.buttonText}>Commander</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.continueButton}>
-            <Text style={styles.continueText}>Continuer mes achats</Text>
-          </TouchableOpacity>
-        </>
+      {/* Validation et boutons */}
+      {validated && (
+        <View style={styles.checkContainer}>
+          <Icon name="checkmark-circle" size={24} color="green" />
+        </View>
       )}
-      <Navbar></Navbar>
+      
+      <View style={styles.buttonContainer}>
+        {!validated ? (
+          <TouchableOpacity 
+            style={styles.validateButton} 
+            onPress={() => setValidated(true)}
+          >
+            <Text style={styles.buttonText}>Valider</Text>
+          </TouchableOpacity>
+        ) : (
+          <>
+            <TouchableOpacity 
+              style={styles.commandButton} 
+              onPress={() => router.push("/panierConsommateur")}
+            >
+              <Text style={styles.buttonText}>Commander</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.continueButton} 
+              onPress={() => router.push("/wishlist")}
+            >
+              <Text style={styles.continueText}>Continuer mes achats</Text>
+            </TouchableOpacity>
+          </>
+        )}
+      </View>
+      
+      <Navbar />
     </SafeAreaView>
   );
 }
@@ -78,12 +103,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFF",
-    alignItems: "center",
     paddingTop: 20,
   },
   backButton: {
     alignSelf: "flex-start",
     marginLeft: 20,
+    marginBottom: 10,
   },
   title: {
     fontSize: 18,
@@ -94,74 +119,85 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: "bold",
   },
-  carousel: {
-    flexDirection: "row",
-    marginBottom: 20,
-  },
-  panierCard: {
-    backgroundColor: "#E8F5C8",
-    padding: 20,
-    marginHorizontal: 10,
-    borderRadius: 10,
-  },
   carouselWrapper: {
     width: "100%",
     alignItems: "center",
+    marginBottom: 15,
   },
   label: {
-    alignSelf: "flex-start",
-    marginLeft: 40,
+    marginLeft: 20,
     marginBottom: 5,
+    fontSize: 14,
   },
   input: {
-    width: "80%",
+    width: "90%",
+    alignSelf: "center",
     borderWidth: 1,
     borderColor: "#A2C653",
-    borderRadius: 5,
-    padding: 10,
-    marginVertical: 5,
+    borderRadius: 25,
+    padding: 12,
+    marginBottom: 15,
     textAlign: "center",
   },
   toteBagContainer: {
     flexDirection: "row",
     alignItems: "center",
+    width: "90%",
+    alignSelf: "center",
+    marginVertical: 10,
+  },
+  toteBagImageContainer: {
+    width: "30%",
   },
   toteBagImage: {
-    width: 150,
-    height: 220,
+    width: 80,
+    height: 100,
+    resizeMode: "contain",
   },
-  inputSmall: {
-    width: "20%",
+  toteBagContent: {
+    width: "70%",
+  },
+  toteBagInput: {
     borderWidth: 1,
     borderColor: "#A2C653",
-    borderRadius: 5,
-    padding: 10,
+    borderRadius: 25,
+    padding: 12,
     textAlign: "center",
+    marginRight: 20,
+  },
+  checkContainer: {
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  buttonContainer: {
+    width: "90%",
+    alignSelf: "center",
+    marginTop: 10,
   },
   validateButton: {
     backgroundColor: "#A2C653",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
-  },
-  // buttonText: {
-  //   color: "white",
-  //   fontWeight: "bold",
-  // },
-  checkIcon: {
-    marginTop: 10,
+    padding: 15,
+    borderRadius: 25,
+    alignItems: "center",
+    marginVertical: 5,
   },
   commandButton: {
     backgroundColor: "#CEDD8F",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
+    padding: 15,
+    borderRadius: 25,
+    alignItems: "center",
+    marginVertical: 5,
   },
   continueButton: {
     backgroundColor: "#70B54D",
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
+    padding: 15,
+    borderRadius: 25,
+    alignItems: "center",
+    marginVertical: 5,
+  },
+  buttonText: {
+    color: "black",
+    fontWeight: "bold",
   },
   continueText: {
     color: "white",

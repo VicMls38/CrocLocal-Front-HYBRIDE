@@ -2,13 +2,14 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, SafeAreaView } from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 import Navbar from "@/components/navbarConsommateur"; 
+import { router } from 'expo-router';
 
 const CartPage = () => {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
           <Icon name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>TON <Text style={styles.headerTitleBold}>PANIER</Text></Text>
@@ -108,7 +109,7 @@ const CartPage = () => {
       </TouchableOpacity>
 
       {/* Continue Shopping */}
-      <TouchableOpacity style={styles.continueShopping}>
+      <TouchableOpacity style={styles.continueShopping} onPress={() => router.push("/wishlist")}>
         <Text style={styles.continueShoppingText}>Continuer mes achats</Text>
       </TouchableOpacity>
       <Navbar></Navbar>
